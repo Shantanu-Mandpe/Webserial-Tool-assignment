@@ -3,6 +3,7 @@ import {ref} from "vue";
 import {hex} from "../util.js";
 import { getUsbInfo } from "../usb-ids.js"
 
+/* get info about the port */
 const vid_pid = (port) => {
   const info = port.getInfo()
   return hex(info.usbVendorId) + ':' + hex(info.usbProductId)
@@ -36,6 +37,7 @@ const useConnectionStore = defineStore({
   getters: {
   },
   actions: {
+    /*need to change select port to the blue tooth version */
     async selectPort() {
       try {
         if (!navigator.serial) return false
@@ -47,6 +49,7 @@ const useConnectionStore = defineStore({
       }
       catch(e) {}
     },
+    /*change port parts to bluetooth details */
     async init(vid, pid) {
       const ports = await navigator.serial.getPorts()
       const id = vid + ':' + pid
@@ -62,6 +65,7 @@ const useConnectionStore = defineStore({
       this.physicallyConnected = true
 
       // notification for a USB device getting physically connected
+      // change notifications
       const onconnect = (e) => {
         console.log(id + 'device connected', e)
         this.port = e.target

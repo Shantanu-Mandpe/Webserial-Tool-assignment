@@ -45,6 +45,7 @@ const info = () => {
           <input v-model="connection.options.stopBits" id="stop2" type="radio" value="2"><label for="stop2">2</label>
         </dd>
       </dl>
+      <!-- change this while changing to bluetooth -->
       <button v-if="!connection.id || !connection.physicallyConnected" @click="connection.selectPort">Select Serial Port...</button>
       <button v-else @click="connection.connect">Connect</button>
     </fieldset>
