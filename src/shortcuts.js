@@ -1,6 +1,7 @@
 
 
 // this works enough for now
+// e is the parameter / event
 export const keyCombo = (e) => [
     (e.metaKey || e.key === 'Meta') && 'META',
     (e.ctrlKey || e.key === 'Ctrl') && 'CTRL',

@@ -48,6 +48,7 @@ const info = () => {
       <!-- change this while changing to bluetooth -->
       <button v-if="!connection.id || !connection.physicallyConnected" @click="connection.selectPort">Select Serial Port...</button>
       <button v-else @click="connection.connect">Connect</button>
+      <!-- dont need a connectionToggle Button because we use physicallyConnected attr to decide if connected or not -->
     </fieldset>
   </div>
 </template>

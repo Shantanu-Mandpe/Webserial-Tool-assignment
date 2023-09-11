@@ -1,0 +1,65 @@
+connectionToggle -  if ble connected then goto disconnect() else go to connect()
+
+setConnButtonState - change wording depending on connected or not 
+
+connect - see if bluetooth api available, if available get devices with certain constraints 
+	returns device - with id,name - connect to gatt server
+	returns server - get all the Rx/Tx services 
+	returns characteristic - with tx startNotifications 
+	change state and button etc 
+	catch errors 
+
+disconnect - if no bleDevice - console smthng else disconnect the device and change state and button etc 
+
+onDisconnected | handleNotifications - for specific events 
+
+nusSendString(instead of readableStream use this) | sendNextChunk - send input data (string) 20bits at a time
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+vid_pid - get pid : vid of the port 
+
+selectPort - Check if webSerial API available
+	   Gives Port chosen by user (requestPort) and then return usb info as an obj 
+	   set window.location.search = "?vid=12&pid=13" (example)
+
+init(par) -  get all ports into an array 
+	create a const id  -  vid : pid (arguments)
+	store the port whose id matches the const in this.port and clear the w.l.s of all others
+	change the vendor / Product and physicallyConnected vars 
+	when connect/disconnect events happen change parameters 
+
+connect - check if the port is connected 
+	open the serial port for communication with the given options 
+	if the port is open create a readableStream for receiving data from the device connected to the port
+	goto monitor()
+
+monitor - while port is open nad readableStream is there do shit 
+	set this.open to true and create a reader and lock the stream to it (getReader())
+	use reader.read - if done : true close the reader 
+	decode and store the string/value 
+	push the decoded string to the msgs array 
+
+write - 	open a writable stream 
+	create a writer and write encoded data to it    
+
+close - 	cancle the reader created and close the port	
+	 
+
+selectPort will only have functionalty of connecting bluetooth device	
+connect will have the service routines (rX and tX)
+monitor will we for reading data  
+write is for sending data to device 
+
+	 
+	
+				
+	   
+ 
+
+
+
+
+
+
+
+	

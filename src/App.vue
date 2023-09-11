@@ -82,6 +82,7 @@ function setInputValue(target, value) {
   document.execCommand('insertText', false, value)
 }
 
+// might need to change this for just using bluetooth id but not sure 
 onMounted(async () => {
   const qs = new URLSearchParams(window.location.search);
   if (qs.get('vid') && qs.get('pid')) {
@@ -99,6 +100,7 @@ onMounted(async () => {
   });
   resizeObserver.observe(outputDiv);
 
+  /* need to change connection.open to make just a connection toggle */
   window.addEventListener('keydown', async (e) => {
     if (keyCombo(e) === shortcuts.TOGGLE_CONNECTION) {
       e.preventDefault();
