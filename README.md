@@ -1,4 +1,4 @@
-# Webserial Tool assignment
+# Webserial Tool Assignment
  - The assignment includes modification of an existing public project which utilises Web Serial API to communication with microcontrollers, to communicate using Web Bluetooth API.
  - Documentation from "Chrome for Developers" was used to learn and practice different aspects of Web Bluetooth API and Web Serial API along with their MDN Web Docs
  - WebSerial(https://github.com/williamkapke/webserial) application by WilliamKapke was used as the base project for modifications
